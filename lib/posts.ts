@@ -6,7 +6,6 @@ export type Post = {
   id: string,
   serial: string,
   filename: string,
-  cover: string,
   title: string,
   description: string,
   created: string,
@@ -22,11 +21,9 @@ export function getAllPosts(): Array<Post> {
     const content = fs.readFileSync(fileAbsPath, "utf-8");
     const data = matter(content).data;
     const serial = fileName.slice(0, 4);
-    const cover = `${serial}-cover.png`;
     return {
       id: fileName.slice(5, -3),
       serial,
-      cover,
       filename: fileName,
       title: data["title"],
       description: data["description"],

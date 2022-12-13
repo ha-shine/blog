@@ -2,7 +2,9 @@ import Layout from "../../component/layout";
 import { getAllPosts, getPostContent } from "../../lib/posts";
 import React from "react";
 import { parse } from "../../lib/markdoc";
-import { AspectRatio, Box, Text } from "@chakra-ui/react";
+import Markdoc from "../../component/markdoc";
+import { format } from "date-fns";
+import { Text } from "@chakra-ui/react";
 
 export async function getStaticPaths() {
   let posts = getAllPosts().map((post) => {
@@ -15,7 +17,6 @@ export async function getStaticPaths() {
   };
 }
 
-// TODO: This is where I need to render the post
 export async function getStaticProps({ params }) {
   const id = params.id;
   const post = getAllPosts().filter(post => post.id === id)[0];
@@ -30,11 +31,12 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ post, content }) {
-  const cover = `/images/${post.cover}`;
+  let date = format(new Date(post.created), "dd MMM yyyy");
 
   return (
     <Layout>
-      <Text>Hello World</Text>
+      <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
+      <Markdoc content={content} />
     </Layout>
   );
 }

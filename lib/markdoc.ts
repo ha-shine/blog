@@ -4,10 +4,13 @@ export function parse(content: string): string {
   const config = {
     nodes: {
       heading: {
-        render: 'Heading'
+        render: 'Heading',
+        attributes: {
+          level: { type: Number }
+        }
       },
       paragraph: {
-        render: 'Text'
+        render: 'Paragraph'
       }
     }
   }

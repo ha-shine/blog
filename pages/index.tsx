@@ -19,12 +19,11 @@ export async function getStaticProps() {
   };
 }
 
-// TODO: The blog posts should have a separator between each
 export default function Index({ posts }) {
   return (
     <Layout>
       <Box>
-        {posts.map((post, idx) => <BlogPost post={post} isLast={idx == posts.length - 1} />)}
+        {posts.map((post, idx) => <BlogPost key={post.id} post={post} isLast={idx == posts.length - 1} />)}
       </Box>
     </Layout>
   );
@@ -35,13 +34,15 @@ function BlogPost({ post, isLast }) {
   let date = format(new Date(post.created), "dd MMM yyyy");
 
   return (
-    <Link href={link}>
-      <Box>
-        <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
-        <Heading fontWeight="bold" fontSize="5xl" color="#E9D8A6" py="2">{post.title}</Heading>
-        <Text fontWeight="light" fontSize="lg" color="gray.200" py="2">{post.description}</Text>
-        { isLast ? null : <Box bg="gray.50" height="0.5" my="10" /> }
-      </Box>
-    </Link>
+    <Box>
+      <Link href={link}>
+        <Box cursor="pointer">
+          <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
+          <Heading fontWeight="bold" fontSize="5xl" color="#E9D8A6" py="2">{post.title}</Heading>
+          <Text fontWeight="normal" fontSize="lg" color="gray.200" py="2">{post.description}</Text>
+        </Box>
+      </Link>
+      {isLast ? null : <Box bg="gray.50" height="0.5" my="10" />}
+    </Box>
   );
 }
