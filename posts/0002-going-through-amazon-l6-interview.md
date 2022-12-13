@@ -1,8 +1,8 @@
 ---
-title: "How is this blog built"
-description: "Unraveling the guts behind the blog you’re reading, the detailed explanation of the technological choices made and why I built my own instead of hosting on a blogging platform."
-created: "2022-10-10"
-last_updated: "2022-10-10"
+title: "Going Through Amazon L6 Interview"
+description: "My experience going through Amazon L6 SDE interview. TLDR, I didn't get the job."
+created: "2022-11-10"
+last_updated: "2022-11-10"
 ---
 
 # How is this blog built
