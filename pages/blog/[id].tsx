@@ -5,6 +5,7 @@ import { parse } from "../../lib/markdoc";
 import Markdoc from "../../component/markdoc";
 import { format } from "date-fns";
 import { Text } from "@chakra-ui/react";
+import Head from "next/head";
 
 export async function getStaticPaths() {
   let posts = getAllPosts().map((post) => {
@@ -35,6 +36,9 @@ export default function Post({ post, content }) {
 
   return (
     <Layout>
+      <Head>
+        <title>Shine.rocks | {post.title}</title>
+      </Head>
       <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
       <Markdoc content={content} />
     </Layout>

@@ -42,7 +42,7 @@ TODO: Add boid simulation
 
 For rendering, I used [Markdoc] from Stripe which is built on top of Markdown. You can use Markdoc to create interactive documents by defining custom node definitions which can be rendered as react components. This allows me to embed interactive canvas elements like the boid simulation above. I was inspired to make and embed these interactive elements from the amazing [Bartosz Cicechanowski]. If you don't know them I highly recommend you check out their blog posts which are both very educational and entertaining. Currently, all these components live in the same repository although there is nothing preventing you from extracting these components into separate projects. I have plans to do this in the future if I start embedding more complicated projects on this blog.
 
-## Why Built This Instead of Using Medium, Substack, Ghost, <Insert Blogging Platform>
+## Why Build This Instead of Using Medium, Substack, Ghost, <Insert Blogging Platform>
 
 The main reason I've decided to build my own instead of hosting on already established platforms is the ability to embed these interactive components, you simply cannot do this if you host on the aforementioned platforms. Maybe you can, I just didn't do a good enough research. Plus I'm an engineer at heart, so it was very fun for me to build this. Which is another gigantic reason, **fun**! Maybe it wasn't the most optimal use of my time to dabble in something (namely frontend engineering) I was not really comfortable with, or build something that is relatively suboptimal compared to the other platforms built by fantastic engineers, but who cares. Life is short, do things which are enjoyable to you. Productivity hacks be damned.
 
