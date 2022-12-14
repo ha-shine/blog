@@ -11,6 +11,25 @@ export function parse(content: string): string {
       },
       paragraph: {
         render: 'Paragraph'
+      },
+      list: {
+        render: 'List',
+        attributes: {
+          ordered: { type: Boolean }
+        }
+      },
+      item: {
+        render: 'ListItem'
+      },
+      link: {
+        render: 'Link',
+        attributes: {
+          href: { type: String },
+          title: { type: String },
+        }
+      },
+      strong: {
+        render: 'Strong'
       }
     }
   }

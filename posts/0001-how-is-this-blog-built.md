@@ -1,33 +1,57 @@
 ---
-title: "How is this blog built"
-description: "Unraveling the guts behind the blog you’re reading, the detailed explanation of the technological choices made and why I built my own instead of hosting on a blogging platform."
-created: "2022-10-10"
-last_updated: "2022-10-10"
+title:          "The Tech Behind This Blog"
+description:    "Unraveling the guts behind the blog you’re reading, the detailed explanation of the technological choices 
+                 made and why I built my own instead of hosting on a blogging platform."
+created:        "2022-12-15"
+last_updated:   "2022-12-15"
 ---
 
-# How is this blog built
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+# The Tech Behind This Blog
 
-# Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
-nisi ut aliquid ex ea commodi consequatur? 
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+In this post, I will show you the bits and pieces of how this blog is constructed, the technical choices I made and why. There will be two parts to this post. First, I will explain how things fit together. This will serve as an informational blog post for you, the readers, and as a reference for myself as well since I have the memory of a goldfish and will probably forget how everything works in less than a week if I stop working on this. So it goes without saying that this post will be updated often. In the second part, I will give the justifications on why I made these choices. Without further ado, let's dig in.
 
-# 1914 translation by H. Rackham
-But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+## The Components
 
-# Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+Essentially, this blog is built with these amazing tools and libraries:
 
-# 1914 translation by H. Rackham
-On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.
+- [NextJS] for the framework and [Vercel] for hosting
+- [Chakra UI] component library for all the styling needs
+- [Markdoc] for rendering blog posts
+- [date-fns] date utility library
+
+
+It is open-sourced on [GitHub][Source]. Each individual post is inside it's own Markdoc file under **posts** directory,
+and contains a front matter metadata block that is used for both rendering and SEO.
+Everything is statically generated, with no CMS.
+
+## NextJS and Chakra UI
+
+During the ideation phase, I had several criteria for a framework (and a platform) to host my blog. I have substantial experience with [React], and I wanted server-side rendering for performance and SEO. I don't enjoy working with dynamic languages, so Typescript support was top priority for me as well. Plus I wanted a friction-free platform where I can focus on implementing features and writing blogs rather than maintaining a plethora of tools just to render a markdown document on the web. It was a no-brainer for me to choose NextJS and by extension, Vercel platform. I can't praise the NextJS team enough on how easy it is to start making web applications using the framework. The developer experience is simply one of the best in class. From documentation to deployments, everything just makes sense.
+
+My expertise is in the backend, so writing my own CSS wasn't in the cards for me. I was looking for a UI component system (ala [bootstrap][Bootstrap]) that is:
+
+1. Easy for me to learn
+2. With accessibility in mind
+3. Themeable, composable and works well with [React]
+
+I went with [Chakra UI] for my styling needs. I don't really have any compelling reason for choosing this over other CSS libraries if I'm being honest, this is simply the first one that came up on Google (and of course, checks all boxes).
+
+## Markdoc
+
+TODO: Add boid simulation
+
+For rendering, I used [Markdoc] from Stripe which is built on top of Markdown. You can use Markdoc to create interactive documents by defining custom node definitions which can be rendered as react components. This allows me to embed interactive canvas elements like the boid simulation above. I was inspired to make and embed these interactive elements from the amazing [Bartosz Cicechanowski]. If you don't know them I highly recommend you check out their blog posts which are both very educational and entertaining. Currently, all these components live in the same repository although there is nothing preventing you from extracting these components into separate projects. I have plans to do this in the future if I start embedding more complicated projects on this blog.
+
+## Why Built This Instead of Using Medium, Substack, Ghost, <Insert Blogging Platform>
+
+The main reason I've decided to build my own instead of hosting on already established platforms is the ability to embed these interactive components, you simply cannot do this if you host on the aforementioned platforms. Maybe you can, I just didn't do a good enough research. Plus I'm an engineer at heart, so it was very fun for me to build this. Which is another gigantic reason, **fun**! Maybe it wasn't the most optimal use of my time to dabble in something (namely frontend engineering) I was not really comfortable with, or build something that is relatively suboptimal compared to the other platforms built by fantastic engineers, but who cares. Life is short, do things which are enjoyable to you. Productivity hacks be damned.
+
+[Markdoc]: https://markdoc.dev/
+[Bartosz Cicechanowski]: https://ciechanow.ski/
+[NextJS]: https://nextjs.org/
+[Chakra UI]: https://chakra-ui.com/
+[Source]: https://github.com/ha-shine/blog
+[date-fns]: https://date-fns.org/
+[React]: https://reactjs.org/
+[Vercel]: https://vercel.com/solutions/nextjs
+[Bootstrap]: https://getbootstrap.com/
