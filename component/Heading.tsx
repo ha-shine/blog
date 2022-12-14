@@ -1,6 +1,11 @@
 import { Heading as ChakraHeading } from "@chakra-ui/react";
 
-export default function Heading({ children, level }) {
+interface Props {
+  children: string,
+  level?: number
+}
+
+export default function Heading({ children, level = 1 }: Props) {
   const fontSize = `${6 - level}xl`;
 
   return (

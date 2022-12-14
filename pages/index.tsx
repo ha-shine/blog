@@ -1,8 +1,10 @@
 import Layout from "../component/layout";
 import { getAllPosts } from "../lib/posts";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
+import Heading from "../component/Heading";
 import Link from "next/link";
-import { format, parse } from "date-fns";
+import { format } from "date-fns";
+import Paragraph from "../component/Paragraph";
 
 export async function getStaticProps() {
   return {
@@ -38,8 +40,8 @@ function BlogPost({ post, isLast }) {
       <Link href={link}>
         <Box cursor="pointer">
           <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
-          <Heading fontWeight="bold" fontSize="5xl" color="#E9D8A6" py="2">{post.title}</Heading>
-          <Text fontWeight="normal" fontSize="lg" color="gray.200" py="2">{post.description}</Text>
+          <Heading>{post.title}</Heading>
+          <Paragraph>{post.description}</Paragraph>
         </Box>
       </Link>
       {isLast ? null : <Box bg="gray.50" height="0.5" my="10" />}
