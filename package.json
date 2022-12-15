@@ -10,6 +10,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@markdoc/markdoc": "^0.1.12",
+    "@vercel/analytics": "^0.1.6",
     "date-fns": "^2.29.3",
     "framer-motion": "^6",
     "gray-matter": "^4.0.3",

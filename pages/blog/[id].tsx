@@ -33,11 +33,12 @@ export async function getStaticProps({ params }) {
 
 export default function Post({ post, content }) {
   let date = format(new Date(post.created), "dd MMM yyyy");
+  let title = `Shine.rocks | ${post.title}`;
 
   return (
     <Layout>
       <Head>
-        <title>Shine.rocks | {post.title}</title>
+        <title>{title}</title>
       </Head>
       <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
       <Markdoc content={content} />
