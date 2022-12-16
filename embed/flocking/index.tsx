@@ -1,5 +1,16 @@
 import React from "react";
-import { AspectRatio, Box, Input } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+} from "@chakra-ui/react";
 import Boid from "./Boid";
 import Vector2D from "../../lib/math/Vector2D";
 import { Application, Graphics } from "pixi.js";
@@ -7,7 +18,9 @@ import { Application, Graphics } from "pixi.js";
 class App {
   private app: Application;
   private elapsed: number;
-
+  alignment: number;
+  cohesion: number;
+  separation: number;
   private boids: Array<Boid>;
   private boidsGraphics: Array<Graphics>;
 
@@ -20,6 +33,9 @@ class App {
     this.elapsed = 0;
     this.boids = [];
     this.boidsGraphics = [];
+    this.alignment = 0.5;
+    this.cohesion = 0.5;
+    this.separation = 0.5;
 
     for (let i = 0; i < boidCount; i++) this.addBoid();
     this.app.ticker.add((delta) => this.update(delta));
@@ -57,7 +73,7 @@ class App {
   private updateState(delta: number) {
     // Flock the boids
     for (let boid of this.boids) {
-      boid.flock(this.boids);
+      boid.flock(this.boids, this.alignment, this.cohesion, this.separation);
     }
 
     // Update position and velocity, use a snapshot of previous frame
@@ -119,6 +135,9 @@ class App {
 
 interface State {
   boidCount: number;
+  alignment: number;
+  cohesion: number;
+  separation: number;
 }
 
 export default class Flocking extends React.Component<any, State> {
@@ -131,6 +150,9 @@ export default class Flocking extends React.Component<any, State> {
     this.canvasRef = React.createRef();
     this.state = {
       boidCount: 100,
+      alignment: 100,
+      cohesion: 100,
+      separation: 100,
     };
   }
 
@@ -151,10 +173,8 @@ export default class Flocking extends React.Component<any, State> {
   setBoidCount(count: string) {
     let parsed = parseInt(count);
 
-    if (parsed < 1 || isNaN(parsed))
-      parsed = 1
-    else if (parsed > 1000)
-      parsed = 1000
+    if (parsed < 1 || isNaN(parsed)) parsed = 1;
+    else if (parsed > 1000) parsed = 1000;
 
     this.setState({
       boidCount: parsed,
@@ -162,22 +182,110 @@ export default class Flocking extends React.Component<any, State> {
     this.app?.setBoidCount(parsed);
   }
 
+  setAlignmentValue(value: number) {
+    this.setState({ alignment: value });
+    this.app.alignment = value / 100;
+  }
+
+  setCohesionValue(value: number) {
+    this.setState({ cohesion: value });
+    this.app.cohesion = value / 100;
+  }
+
+  setSeparationValue(value: number) {
+    this.setState({ separation: value });
+    this.app.separation = value / 100;
+  }
+
   render() {
     return (
       <>
-        <Input
-          value={this.state.boidCount}
-          onChange={(event) => this.setBoidCount(event.target.value)}
-          placeholder="100"
-          fontWeight="normal"
-          size="lg"
-          color="gray.200"
-          type="number"
-          variant="flushed"
-        />
-        <AspectRatio ratio={8 / 4}>
-          <Box ref={this.canvasRef} width="100%" />
-        </AspectRatio>
+        <Box p="1" bgColor="#001219">
+          <Flex flexDir="column" p={3} mb="2">
+            <FormControl display="flex" alignItems="center">
+              <FormLabel fontSize="lg" color="gray.200" minW="150px" m={0}>
+                Boid Count
+              </FormLabel>
+              <Input
+                value={this.state.boidCount}
+                onChange={(event) => this.setBoidCount(event.target.value)}
+                placeholder="100"
+                fontWeight="normal"
+                size="lg"
+                color="orange.500"
+                type="number"
+                variant="flushed"
+                borderColor="transparent"
+                focusBorderColor="transparent"
+                maxW="200px"
+                h="8"
+              />
+            </FormControl>
+            <FormControl display="flex" alignItems="center">
+              <FormLabel fontSize="lg" color="gray.200" minW="150px" m={0}>
+                Alignment
+              </FormLabel>
+              <Slider
+                aria-label="Alignment slider"
+                value={this.state.alignment}
+                onChange={(v) => this.setAlignmentValue(v)}
+                min={0}
+                max={200}
+                maxW="200px"
+                size="lg"
+                h="8"
+              >
+                <SliderTrack bgColor="gray.700">
+                  <SliderFilledTrack bgGradient="linear(to-r, orange.500, yellow.300)" />
+                </SliderTrack>
+                <SliderThumb />
+              </Slider>
+            </FormControl>
+            <FormControl display="flex" alignItems="center">
+              <FormLabel fontSize="lg" color="gray.200" minW="150px" m={0}>
+                Cohesion
+              </FormLabel>
+              <Slider
+                aria-label="Cohesion slider"
+                value={this.state.cohesion}
+                onChange={(v) => this.setCohesionValue(v)}
+                min={0}
+                max={200}
+                maxW="200px"
+                size="lg"
+                h="8"
+              >
+                <SliderTrack bgColor="gray.700">
+                  <SliderFilledTrack bgGradient="linear(to-r, orange.500, yellow.300)" />
+                </SliderTrack>
+                <SliderThumb />
+              </Slider>
+            </FormControl>
+            <FormControl display="flex" alignItems="center">
+              <FormLabel fontSize="lg" color="gray.200" minW="150px" m={0}>
+                Separation
+              </FormLabel>
+              <Slider
+                aria-label="Separation slider"
+                value={this.state.separation}
+                onChange={(v) => this.setSeparationValue(v)}
+                min={0}
+                max={200}
+                maxW="200px"
+                size="lg"
+                h="8"
+              >
+                <SliderTrack bgColor="gray.700">
+                  <SliderFilledTrack bgGradient="linear(to-r, orange.500, yellow.300)" />
+                </SliderTrack>
+                <SliderThumb />
+              </Slider>
+            </FormControl>
+          </Flex>
+          <AspectRatio ratio={8 / 4}>
+            <Box ref={this.canvasRef} width="100%" />
+          </AspectRatio>
+        </Box>
       </>
     );
   }

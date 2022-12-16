@@ -109,11 +109,11 @@ export default class Boid {
     return vector;
   }
 
-  flock(others: Array<Boid>) {
+  flock(others: Array<Boid>, alignment: number, cohesion: number, separation: number) {
     this.acceleration.mul(0);
-    this.acceleration.add(this.align(others));
-    this.acceleration.add(this.cohesion(others));
-    this.acceleration.add(this.separation(others));
+    this.acceleration.add(this.align(others).mul(alignment));
+    this.acceleration.add(this.cohesion(others).mul(cohesion));
+    this.acceleration.add(this.separation(others).mul(separation));
   }
 
   update(delta: number) {
