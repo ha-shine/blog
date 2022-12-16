@@ -11,7 +11,10 @@ const theme = extendTheme({
   fonts: {
     heading: 'Oswald',
     body: 'Lato'
-  }
+  },
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
 });
+
 
 export default theme;

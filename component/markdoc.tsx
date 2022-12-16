@@ -3,6 +3,7 @@ import { renderers } from "@markdoc/markdoc";
 import Heading from "./Heading";
 import Paragraph from "./Paragraph";
 import { ListItem, OrderedList, Text, UnorderedList } from "@chakra-ui/react";
+import Flocking from "../embed/flocking";
 
 function List({ children, ordered }) {
   if (ordered) {
@@ -42,7 +43,9 @@ export default function Markdoc({ content }) {
     List,
     ListItem,
     Link,
-    Strong
+    Strong,
+
+    Flocking
   };
 
   return (

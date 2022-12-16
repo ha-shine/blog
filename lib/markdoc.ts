@@ -4,35 +4,40 @@ export function parse(content: string): string {
   const config = {
     nodes: {
       heading: {
-        render: 'Heading',
+        render: "Heading",
         attributes: {
-          level: { type: Number }
-        }
+          level: { type: Number },
+        },
       },
       paragraph: {
-        render: 'Paragraph'
+        render: "Paragraph",
       },
       list: {
-        render: 'List',
+        render: "List",
         attributes: {
-          ordered: { type: Boolean }
-        }
+          ordered: { type: Boolean },
+        },
       },
       item: {
-        render: 'ListItem'
+        render: "ListItem",
       },
       link: {
-        render: 'Link',
+        render: "Link",
         attributes: {
           href: { type: String },
           title: { type: String },
-        }
+        },
       },
       strong: {
-        render: 'Strong'
-      }
-    }
-  }
+        render: "Strong",
+      },
+    },
+    tags: {
+      flockingSimulation: {
+        render: "Flocking",
+      },
+    },
+  };
 
   const ast = Markdoc.parse(content);
   const json = Markdoc.transform(ast, config);
