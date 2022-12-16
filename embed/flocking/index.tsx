@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { AspectRatio, Box } from "@chakra-ui/react";
+import React from "react";
+import { AspectRatio, Box, Input } from "@chakra-ui/react";
 import Boid from "./Boid";
 import Vector2D from "../../lib/math/Vector2D";
 import { Application, Graphics } from "pixi.js";
@@ -16,8 +16,6 @@ class App {
       width: 800,
       height: 400,
       backgroundColor: "#1A202C",
-      resolution: window.devicePixelRatio,
-      autoDensity: true,
     });
     this.elapsed = 0;
     this.boids = [];
@@ -92,9 +90,21 @@ class App {
         this.boids[i].position.y
       );
 
-      this.boidsGraphics[i].rotation = Math.atan2(
-        this.boids[i].velocity.y, this.boids[i].velocity.x
-      ) + 1.5;
+      this.boidsGraphics[i].rotation =
+        Math.atan2(this.boids[i].velocity.y, this.boids[i].velocity.x) + 1.5;
+    }
+  }
+
+  setBoidCount(count: number) {
+    if (count >= this.boids.length) {
+      while (this.boids.length != count) {
+        this.addBoid();
+      }
+    } else if (count < this.boids.length) {
+      while (this.boids.length != count) {
+        this.boids.pop();
+        this.boidsGraphics.pop().destroy(true);
+      }
     }
   }
 
@@ -107,25 +117,68 @@ class App {
   }
 }
 
-export default function Flocking() {
-  const ref = useRef(null);
+interface State {
+  boidCount: number;
+}
 
-  useEffect(() => {
-    const flocking = new App(100);
-    const view = flocking.view();
+export default class Flocking extends React.Component<any, State> {
+  canvasRef;
+  app?: App;
+
+  constructor(props) {
+    super(props);
+
+    this.canvasRef = React.createRef();
+    this.state = {
+      boidCount: 100,
+    };
+  }
+
+  componentDidMount() {
+    const app = new App(this.state.boidCount);
+    const view = app.view();
     view.style.width = "100%";
     view.style.height = "100%";
 
-    ref.current.appendChild(view);
+    this.canvasRef.current.appendChild(view);
+    this.app = app;
+  }
 
-    return () => {
-      flocking.destroy();
-    };
-  }, []);
+  componentWillUnmount() {
+    this.app?.destroy();
+  }
 
-  return (
-    <AspectRatio ratio={8 / 4}>
-      <Box ref={ref} width="100%" />
-    </AspectRatio>
-  );
+  setBoidCount(count: string) {
+    let parsed = parseInt(count);
+
+    if (parsed < 1 || isNaN(parsed))
+      parsed = 1
+    else if (parsed > 1000)
+      parsed = 1000
+
+    this.setState({
+      boidCount: parsed,
+    });
+    this.app?.setBoidCount(parsed);
+  }
+
+  render() {
+    return (
+      <>
+        <Input
+          value={this.state.boidCount}
+          onChange={(event) => this.setBoidCount(event.target.value)}
+          placeholder="100"
+          fontWeight="normal"
+          size="lg"
+          color="gray.200"
+          type="number"
+          variant="flushed"
+        />
+        <AspectRatio ratio={8 / 4}>
+          <Box ref={this.canvasRef} width="100%" />
+        </AspectRatio>
+      </>
+    );
+  }
 }
