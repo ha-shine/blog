@@ -36,8 +36,12 @@ class App {
       );
 
     let graphics = new Graphics();
-    graphics.beginFill(0xff0000, 1.0);
-    graphics.drawCircle(0, 0, 3.0);
+    graphics.beginFill(0xae2012);
+    graphics.drawPolygon([
+      { x: 0, y: -3 },
+      { x: -3, y: 4 },
+      { x: 3, y: 4 },
+    ]);
     graphics.endFill();
 
     this.boids.push(new Boid(position));
@@ -87,6 +91,10 @@ class App {
         this.boids[i].position.x,
         this.boids[i].position.y
       );
+
+      this.boidsGraphics[i].rotation = Math.atan2(
+        this.boids[i].velocity.y, this.boids[i].velocity.x
+      ) + 1.5;
     }
   }
 
