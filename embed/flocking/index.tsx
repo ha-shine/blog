@@ -15,7 +15,7 @@ class App {
     this.app = new Application({
       width: 800,
       height: 400,
-      backgroundColor: "#171923",
+      backgroundColor: "#1A202C",
       resolution: window.devicePixelRatio,
       autoDensity: true,
     });
@@ -114,6 +114,7 @@ export default function Flocking() {
     const flocking = new App(100);
     const view = flocking.view();
     view.style.width = "100%";
+    view.style.height = "100%";
 
     ref.current.appendChild(view);
 
