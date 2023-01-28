@@ -14,20 +14,20 @@ export async function getStaticPaths() {
 
   return {
     paths: posts,
-    fallback: false
+    fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
   const id = params.id;
-  const post = getAllPosts().filter(post => post.id === id)[0];
+  const post = getAllPosts().filter((post) => post.id === id)[0];
   const rawText = getPostContent(post);
 
   return {
     props: {
       post: post,
-      content: parse(rawText)
-    }
+      content: parse(rawText),
+    },
   };
 }
 
@@ -39,8 +39,17 @@ export default function Post({ post, content }) {
     <Layout>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={post.description} />
+        <meta name="og:title" property="og:title" content={title} />
+        <meta
+          name="og:description"
+          property="og:description"
+          content={post.description}
+        />
       </Head>
-      <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
+      <Text fontWeight="light" fontSize="md" color="gray.50">
+        {date}
+      </Text>
       <Markdoc content={content} />
     </Layout>
   );

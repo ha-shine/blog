@@ -10,15 +10,12 @@ import Head from "next/head";
 export async function getStaticProps() {
   return {
     props: {
-      posts: getAllPosts()
-        .sort((a, b) => {
-          if (b.filename <= a.filename)
-            return -1;
-          else if (a.filename < b.filename)
-            return 1;
-          return 0;
-        })
-    }
+      posts: getAllPosts().sort((a, b) => {
+        if (b.filename <= a.filename) return -1;
+        else if (a.filename < b.filename) return 1;
+        return 0;
+      }),
+    },
   };
 }
 
@@ -27,9 +24,29 @@ export default function Index({ posts }) {
     <Layout>
       <Head>
         <title>Shine.rocks</title>
+        <meta
+          name="description"
+          content="A collection of rumblings from a senior software engineer"
+        />
+        <meta
+          name="og:title"
+          property="og:title"
+          content="Homepage of shine.rocks"
+        />
+        <meta
+          name="og:description"
+          property="og:description"
+          content="A collection of rumblings from a senior software engineer"
+        />
       </Head>
       <Box>
-        {posts.map((post, idx) => <BlogPost key={post.id} post={post} isLast={idx == posts.length - 1} />)}
+        {posts.map((post, idx) => (
+          <BlogPost
+            key={post.id}
+            post={post}
+            isLast={idx == posts.length - 1}
+          />
+        ))}
       </Box>
     </Layout>
   );
@@ -43,7 +60,9 @@ function BlogPost({ post, isLast }) {
     <Box>
       <Link href={link}>
         <Box cursor="pointer">
-          <Text fontWeight="light" fontSize="md" color="gray.50">{date}</Text>
+          <Text fontWeight="light" fontSize="md" color="gray.50">
+            {date}
+          </Text>
           <Heading>{post.title}</Heading>
           <Paragraph>{post.description}</Paragraph>
         </Box>
