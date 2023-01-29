@@ -12,6 +12,13 @@ export function parse(content: string): string {
       paragraph: {
         render: "Paragraph",
       },
+      image: {
+        render: "Image",
+        attributes: {
+          alt: { type: String },
+          src: { type: String },
+        },
+      },
       list: {
         render: "List",
         attributes: {
