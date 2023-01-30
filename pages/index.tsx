@@ -59,7 +59,7 @@ function BlogPost({ post, isLast }) {
   return (
     <Box>
       <Link href={link}>
-        <Box cursor="pointer">
+        <Box cursor="pointer" role="group">
           <Text fontWeight="light" fontSize="md" color="gray.50">
             {date}
           </Text>
