@@ -1,10 +1,10 @@
-import Layout from "../component/layout";
-import { getAllPosts } from "../lib/posts";
+import Layout from "../../component/layout";
+import { getAllPosts } from "../../lib/posts";
 import { Box, Text } from "@chakra-ui/react";
-import Heading from "../component/Heading";
+import Heading from "../../component/Heading";
 import Link from "next/link";
 import { format } from "date-fns";
-import Paragraph from "../component/Paragraph";
+import Paragraph from "../../component/Paragraph";
 import Head from "next/head";
 
 export async function getStaticProps() {
