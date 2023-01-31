@@ -1,4 +1,3 @@
-import Layout from "../../component/layout";
 import { getAllPosts, getPostContent } from "../../lib/posts";
 import React from "react";
 import { parse } from "../../lib/markdoc";
@@ -6,6 +5,7 @@ import Markdoc from "../../component/markdoc";
 import { format } from "date-fns";
 import { Text } from "@chakra-ui/react";
 import Head from "next/head";
+import BlogLayout from "../../component/BlogLayout";
 
 export async function getStaticPaths() {
   let posts = getAllPosts().map((post) => {
@@ -36,7 +36,7 @@ export default function Post({ post, content }) {
   let title = `Shine.rocks | ${post.title}`;
 
   return (
-    <Layout>
+    <BlogLayout>
       <Head>
         <title>{title}</title>
         <meta name="description" content={post.description} />
@@ -51,6 +51,6 @@ export default function Post({ post, content }) {
         {date}
       </Text>
       <Markdoc content={content} />
-    </Layout>
+    </BlogLayout>
   );
 }

@@ -1,4 +1,3 @@
-import Layout from "../../component/layout";
 import { getAllPosts } from "../../lib/posts";
 import { Box, Text } from "@chakra-ui/react";
 import Heading from "../../component/Heading";
@@ -6,6 +5,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import Paragraph from "../../component/Paragraph";
 import Head from "next/head";
+import BlogLayout from "../../component/BlogLayout";
 
 export async function getStaticProps() {
   return {
@@ -21,7 +21,7 @@ export async function getStaticProps() {
 
 export default function Index({ posts }) {
   return (
-    <Layout>
+    <BlogLayout>
       <Head>
         <title>Shine.rocks</title>
         <meta
@@ -48,7 +48,7 @@ export default function Index({ posts }) {
           />
         ))}
       </Box>
-    </Layout>
+    </BlogLayout>
   );
 }
 
