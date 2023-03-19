@@ -61,7 +61,7 @@ export default function Layout({ children }) {
         </Box>
         <Box bg="gray.800" py="4">
           <Container maxWidth="container.xl">
-            <FooterLink link={"https://twitter.com/_sha94"} text={"Twitter"} />
+            <FooterLink link={"https://twitter.com/shinedotrocks"} text={"Twitter"} />
             <FooterLink link={"https://github.com/ha-shine"} text={"GitHub"} />
             <FooterLink
               link={"https://www.linkedin.com/in/htet-aung-shine-79654192/"}
