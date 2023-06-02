@@ -4,7 +4,7 @@ import InstagramIcon from "../icons/instagram.svg";
 import TiktokIcon from "../icons/tiktok.svg";
 import GithubIcon from "../icons/github.svg";
 import LinkedInIcon from "../icons/linkedin.svg";
-import { Icon, Link } from "@chakra-ui/react";
+import { HStack, Icon, Link } from "@chakra-ui/react";
 
 export default function SocialIconGroup() {
   const links = [
@@ -20,20 +20,20 @@ export default function SocialIconGroup() {
   ];
 
   return (
-    <>
+    <HStack spacing="5">
       {links.map(({ link, icon }) => (
         <SocialIcon key={link} link={link}>
           {icon}
         </SocialIcon>
       ))}
-    </>
+    </HStack>
   );
 }
 
 function SocialIcon({ link, children }) {
   return (
     <Link href={link} target="__blank">
-      <Icon boxSize="2.5em" fill="gray.50" mr="6">
+      <Icon boxSize="2.5em" fill="gray.50">
         {children}
       </Icon>
     </Link>
