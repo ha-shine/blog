@@ -26,7 +26,7 @@ export default function NavLink({ children, href, margin = 7 }) {
       height="9"
       _hover={hover}
     >
-      <ChakraLink as={Link} href={href}>
+      <ChakraLink as={Link} href={href} _hover={{ textDecoration: "none" }}>
         {children}
       </ChakraLink>
     </Text>
