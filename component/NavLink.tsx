@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 export default function NavLink({ children, href, margin = 7 }) {
   let router = useRouter();
   let border = "none";
-  let hover = { "text-decoration": "none" };
+  let hover = { textDecoration: "none" };
   if (router.asPath === href) {
     border = "solid 1px";
   } else {
@@ -18,16 +18,15 @@ export default function NavLink({ children, href, margin = 7 }) {
       fontSize="lg"
       color="gray.200"
       py="2"
+      pb="0"
       mx={margin}
       as="nav"
+      borderBottom={border}
+      borderColor="gray.200"
+      height="9"
+      _hover={hover}
     >
-      <ChakraLink
-        as={Link}
-        href={href}
-        borderBottom={border}
-        borderColor="gray.200"
-        _hover={hover}
-      >
+      <ChakraLink as={Link} href={href}>
         {children}
       </ChakraLink>
     </Text>

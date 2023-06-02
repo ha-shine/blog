@@ -5,11 +5,11 @@ import {
   Flex,
   Spacer,
   Text,
-  VStack,
 } from "@chakra-ui/react";
 import theme from "../lib/theme";
 import Link from "next/link";
 import NavLink from "./NavLink";
+import SocialIconGroup from "./SocialIconGroup";
 
 interface Props {
   link: string;
@@ -51,6 +51,9 @@ export default function Layout({ children }) {
                 <Link href="/">SHINE.ROCKS</Link>
               </Text>
               <Spacer />
+              <NavLink href="/" margin={0}>
+                Home
+              </NavLink>
               <NavLink href="/blog">Blog</NavLink>
               <NavLink href="/projects" margin={0}>
                 Projects
@@ -59,14 +62,9 @@ export default function Layout({ children }) {
             {children}
           </Container>
         </Box>
-        <Box bg="gray.800" py="4">
+        <Box bg="gray.800" py="8">
           <Container maxWidth="container.xl">
-            <FooterLink link={"https://twitter.com/shinedotrocks"} text={"Twitter"} />
-            <FooterLink link={"https://github.com/ha-shine"} text={"GitHub"} />
-            <FooterLink
-              link={"https://www.linkedin.com/in/htet-aung-shine-79654192/"}
-              text={"LinkedIn"}
-            />
+            <SocialIconGroup />
             <FooterLink link={"mailto:h@shine.rocks"} text={"h@shine.rocks"} />
           </Container>
         </Box>
