@@ -1,12 +1,12 @@
-import Layout from "../../component/Layout";
 import Head from "next/head";
 import NextImage from "next/image";
 import { Box, Center, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import WasmTetrisPng from "../../public/wasm-tetris.png";
+import LayoutWithFooter from "../../component/LayoutWithFooter";
 
 export default function Index() {
   return (
-    <Layout>
+    <LayoutWithFooter>
       <Head>
         <title>Shine.rocks</title>
         <meta
@@ -33,7 +33,7 @@ export default function Index() {
           link="https://stuffs.shine.rocks/wasm-tetris/index.html"
         />
       </Box>
-    </Layout>
+    </LayoutWithFooter>
   );
 }
 

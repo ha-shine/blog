@@ -26,17 +26,17 @@ export default function Index({ posts }) {
         <title>Shine.rocks</title>
         <meta
           name="description"
-          content="A collection of rumblings from a senior software engineer"
+          content="A collection of rumblings from Htet Aung Shine"
         />
         <meta
           name="og:title"
           property="og:title"
-          content="Homepage of shine.rocks"
+          content="Blogs from shine.rocks"
         />
         <meta
           name="og:description"
           property="og:description"
-          content="A collection of rumblings from a senior software engineer"
+          content="A collection of rumblings from Htet Aung Shine"
         />
       </Head>
       <Box>

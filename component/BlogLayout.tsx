@@ -1,9 +1,9 @@
-import Layout from "./Layout";
 import { Box, Text, VStack } from "@chakra-ui/react";
+import LayoutWithFooter from "./LayoutWithFooter";
 
 export default function BlogLayout({ children }) {
   return (
-    <Layout>
+    <LayoutWithFooter>
       <Box>
         <VStack align="left" spacing="-2" py="28">
           <Text
@@ -30,6 +30,6 @@ export default function BlogLayout({ children }) {
         </VStack>
       </Box>
       {children}
-    </Layout>
+    </LayoutWithFooter>
   );
 }
