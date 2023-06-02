@@ -9,30 +9,8 @@ import {
 import theme from "../lib/theme";
 import Link from "next/link";
 import NavLink from "./NavLink";
-import SocialIconGroup from "./SocialIconGroup";
 
-interface Props {
-  link: string;
-  text: string;
-}
-
-function FooterLink({ link, text }: Props) {
-  return (
-    <Text
-      fontSize="xl"
-      fontWeight="light"
-      fontFamily="body"
-      color="gray.400"
-      py="1"
-    >
-      <a href={link} target="_blank">
-        {text}
-      </a>
-    </Text>
-  );
-}
-
-export default function Layout({ children }) {
+export default function Layout({ children, footer = null }) {
   return (
     <ChakraProvider theme={theme}>
       <Box minH="100vh" display="flex" flexDir="column">
@@ -62,12 +40,7 @@ export default function Layout({ children }) {
             {children}
           </Container>
         </Box>
-        <Box bg="gray.800" py="8">
-          <Container maxWidth="container.xl">
-            <SocialIconGroup />
-            <FooterLink link={"mailto:h@shine.rocks"} text={"h@shine.rocks"} />
-          </Container>
-        </Box>
+        {footer}
       </Box>
     </ChakraProvider>
   );
