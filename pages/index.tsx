@@ -59,7 +59,7 @@ export default function Index({ creations }) {
         </VStack>
       </Center>
 
-      <Box my="20">
+      <Box my={["10", "20"]}>
         <CreationCardContainer creations={creations} />
       </Box>
     </Layout>

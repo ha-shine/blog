@@ -2,7 +2,12 @@ import { Text, Link as ChakraLink } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function NavLink({ children, href, margin = 7 }) {
+export default function NavLink({
+  children,
+  href,
+  margin = [7],
+  marginRight = 7,
+}) {
   let router = useRouter();
   let border = "none";
   let hover = { textDecoration: "none" };
@@ -20,6 +25,7 @@ export default function NavLink({ children, href, margin = 7 }) {
       py="2"
       pb="0"
       mx={margin}
+      mr={marginRight}
       as="nav"
       borderBottom={border}
       borderColor="gray.200"

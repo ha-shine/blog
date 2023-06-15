@@ -34,8 +34,6 @@ export default function CreationCardContainer(props: Props) {
     </>
   );
 }
-
-// TODO: Pagination
 function CreationCard({ creation }) {
   // Find the emphasised string's index and the content, which will give me
   // the length of the string. This information is used to split the string
@@ -51,10 +49,10 @@ function CreationCard({ creation }) {
   return (
     <Flex
       backgroundColor="gray.800"
-      borderLeft="9px solid transparent"
       _even={{ backgroundColor: "#5A1416" }}
+      direction={["column", "row"]}
     >
-      <VStack width="50%" alignItems="flex-start" p="8">
+      <VStack w={["100%", "50%"]} alignItems="flex-start" p={["4", "8"]}>
         <Heading color="gray.50" fontWeight="bold">
           {firstPart}
           <Text as="span" color="#7FDDDA">
@@ -67,7 +65,7 @@ function CreationCard({ creation }) {
             <IncludeLink key={include.url} {...include} />
           ))}
         </Box>
-        <Spacer />
+        <Spacer display={["none", "flex"]} />
         <HStack spacing="3">
           {creation.social.map((social) => (
             <SocialLink key={social.url} {...social} />
@@ -75,8 +73,8 @@ function CreationCard({ creation }) {
         </HStack>
       </VStack>
       <Box
-        width="50%"
-        height="300px"
+        w={["100%", "50%"]}
+        height={["200px", "300px"]}
         backgroundImage={`url(${creation.thumbnail})`}
         backgroundSize="cover"
         backgroundPosition="center"
