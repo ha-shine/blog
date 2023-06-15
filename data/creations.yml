@@ -1,0 +1,17 @@
+creations:
+  - id: "weekly-printed-mechanism-2"
+    title: "Weekly printed mechanism #2: $Watt's Linkage$"
+    thumbnail: "https://stuffs.shine.rocks/creations/wpm2-small.jpg"
+  - id: "weekly-printed-mechanism-1"
+    title: "Weekly printed mechanism #1: $Spur Gears$"
+    thumbnail: "https://stuffs.shine.rocks/creations/wpm1-small.jpg"
+    social:
+      - url: https://www.youtube.com/shorts/VgjX6pR-lwY
+        type: youtube
+      - url: https://www.instagram.com/p/CtOJzzgL5Lf/
+        type: instagram
+      - url: https://www.tiktok.com/@shinedotrocks/video/7242216441162894593
+        type: tiktok
+#    includes:
+#      - title: Thingiverse
+#        url: "https://www.thingiverse.com"

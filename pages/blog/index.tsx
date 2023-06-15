@@ -23,7 +23,7 @@ export default function Index({ posts }) {
   return (
     <BlogLayout>
       <Head>
-        <title>Shine.rocks</title>
+        <title>Shine.rocks | Blog</title>
         <meta
           name="description"
           content="A collection of rumblings from Htet Aung Shine"

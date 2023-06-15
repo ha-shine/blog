@@ -29,13 +29,10 @@ export default function Layout({ children, footer = null }) {
                 <Link href="/">SHINE.ROCKS</Link>
               </Text>
               <Spacer />
-              <NavLink href="/" margin={0}>
-                Home
-              </NavLink>
-              <NavLink href="/blog">Blog</NavLink>
-              <NavLink href="/projects" margin={0}>
-                Projects
-              </NavLink>
+              <NavigationLink href="/">Home</NavigationLink>
+              <NavigationLink href="/creations">Creations</NavigationLink>
+              <NavigationLink href="/blog">Blog</NavigationLink>
+              <NavigationLink href="/projects">Projects</NavigationLink>
             </Flex>
             {children}
           </Container>
@@ -43,5 +40,13 @@ export default function Layout({ children, footer = null }) {
         {footer}
       </Box>
     </ChakraProvider>
+  );
+}
+
+function NavigationLink({ href, children }) {
+  return (
+    <NavLink href={href} margin={4}>
+      {children}
+    </NavLink>
   );
 }

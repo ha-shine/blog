@@ -33,7 +33,7 @@ export default function SocialIconGroup() {
 function SocialIcon({ link, children }) {
   return (
     <Link href={link} target="__blank">
-      <Icon boxSize="2.5em" fill="gray.50">
+      <Icon boxSize="2.5em" fill="gray.50" _hover={{ fill: "teal.200" }}>
         {children}
       </Icon>
     </Link>

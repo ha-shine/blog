@@ -9,7 +9,7 @@ export default function NavLink({ children, href, margin = 7 }) {
   if (router.asPath === href) {
     border = "solid 1px";
   } else {
-    hover["color"] = "#94D2BD";
+    hover["color"] = "teal.200";
   }
 
   return (
