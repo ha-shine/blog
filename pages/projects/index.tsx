@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <LayoutWithFooter>
       <Head>
-        <title>Shine.rocks</title>
+        <title>Shine.rocks | Projects</title>
         <meta
           name="description"
           content="An assembly of toy projects I have done for fun"

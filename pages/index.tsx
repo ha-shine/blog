@@ -1,11 +1,13 @@
 import Layout from "../component/Layout";
 import Head from "next/head";
 import { Image } from "@chakra-ui/image";
-import { Center, Flex, Link, VStack, Text } from "@chakra-ui/react";
+import { Center, Flex, Link, VStack, Text, Box } from "@chakra-ui/react";
 import Heading from "../component/Heading";
 import SocialIconGroup from "../component/SocialIconGroup";
+import { getAllCreationPosts } from "../lib/creation";
+import CreationCardContainer from "../component/CreationCardContainer";
 
-export default function Index() {
+export default function Index({ creations }) {
   return (
     <Layout>
       <Head>
@@ -56,6 +58,19 @@ export default function Index() {
           </Flex>
         </VStack>
       </Center>
+
+      <Box my={["10", "20"]}>
+        <CreationCardContainer creations={creations} />
+      </Box>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const creations = getAllCreationPosts();
+  return {
+    props: {
+      creations,
+    },
+  };
 }

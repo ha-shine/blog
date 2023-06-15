@@ -4739,6 +4739,7 @@ next@latest:
     date-fns: ^2.29.3
     framer-motion: ^6
     gray-matter: ^4.0.3
+    js-yaml: ^4.1.0
     next: latest
     pixi.js: ^7.1.1
     prettier: ^2.7.1
