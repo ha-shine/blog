@@ -9,6 +9,9 @@ creations:
         type: instagram
       - url: https://www.tiktok.com/@shinedotrocks/video/7244780133809147138
         type: tiktok
+    includes:
+      - title: Thingiverse
+        url: "https://www.thingiverse.com/thing:6078991"
   - id: "weekly-printed-mechanism-1"
     title: "Weekly printed mechanism #1: $Spur Gears$"
     thumbnail: "https://stuffs.shine.rocks/creations/wpm1-small.jpg"
@@ -19,6 +22,6 @@ creations:
         type: instagram
       - url: https://www.tiktok.com/@shinedotrocks/video/7242216441162894593
         type: tiktok
-#    includes:
-#      - title: Thingiverse
-#        url: "https://www.thingiverse.com"
+    includes:
+     - title: Thingiverse
+       url: "https://www.thingiverse.com/thing:6078988"
