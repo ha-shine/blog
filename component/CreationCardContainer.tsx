@@ -60,12 +60,12 @@ function CreationCard({ creation }) {
           </Text>
           {lastPart}
         </Heading>
-        <Box>
+        <HStack spacing="2">
           {creation.includes.map((include) => (
             <IncludeLink key={include.url} {...include} />
           ))}
-        </Box>
-        <Spacer display={["none", "flex"]} />
+        </HStack>
+        <Spacer />
         <HStack spacing="3">
           {creation.social.map((social) => (
             <SocialLink key={social.url} {...social} />

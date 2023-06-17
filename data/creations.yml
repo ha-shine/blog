@@ -1,4 +1,14 @@
 creations:
+  - id: "charger-station"
+    title: "Table organiser - $Charging station$"
+    thumbnail: "https://stuffs.shine.rocks/creations/charger-station-small.jpg"
+    includes:
+      - title: "3D Model"
+        url: "https://www.thingiverse.com/thing:6081991"
+      - title: "USB Charger"
+        url: "https://amzn.to/3X8l2yL"
+      - title: "Charging Dock Station"
+        url: "https://amzn.to/42DFRDe"
   - id: "weekly-printed-mechanism-2"
     title: "Weekly printed mechanism #2: $Watt's Linkage$"
     thumbnail: "https://stuffs.shine.rocks/creations/wpm2-small.jpg"
@@ -10,7 +20,7 @@ creations:
       - url: https://www.tiktok.com/@shinedotrocks/video/7244780133809147138
         type: tiktok
     includes:
-      - title: Thingiverse
+      - title: "3D Model"
         url: "https://www.thingiverse.com/thing:6078991"
   - id: "weekly-printed-mechanism-1"
     title: "Weekly printed mechanism #1: $Spur Gears$"
@@ -23,5 +33,5 @@ creations:
       - url: https://www.tiktok.com/@shinedotrocks/video/7242216441162894593
         type: tiktok
     includes:
-     - title: Thingiverse
-       url: "https://www.thingiverse.com/thing:6078988"
+      - title: "3D Model"
+        url: "https://www.thingiverse.com/thing:6078988"
