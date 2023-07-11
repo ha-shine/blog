@@ -1,10 +1,23 @@
 creations:
+  - id: "weekly-printed-mechanism-5"
+    title: "Weekly printed mechanism #5: $Geneva Drive$"
+    thumbnail: "https://stuffs.shine.rocks/creations/geneva-drive-small.jpg"
+    includes:
+      - title: "3D Model"
+        url: "https://www.thingiverse.com/thing:6117991"
   - id: "weekly-printed-mechanism-4"
     title: "Weekly printed mechanism #4: $Slider Crank$"
     thumbnail: "https://stuffs.shine.rocks/creations/wpm4-small.jpg"
     includes:
       - title: "3D Model"
         url: "https://www.thingiverse.com/thing:6102391"
+    social:
+      - url: https://youtube.com/shorts/i5I2yNMl8Mo
+        type: youtube
+      - url: https://www.instagram.com/p/CuHtntjPZOb/
+        type: instagram
+      - url: https://www.tiktok.com/@shinedotrocks/video/7250510188497652999
+        type: tiktok
   - id: "charger-station"
     title: "Table organiser - $Charging station$"
     thumbnail: "https://stuffs.shine.rocks/creations/charger-station-small.jpg"
