@@ -44,7 +44,6 @@ export default function Layout({ children, footer = null }) {
               <Spacer />
               <Box display={["none", "flex"]}>
                 <NavigationLink href="/">Home</NavigationLink>
-                <NavigationLink href="/creations">Creations</NavigationLink>
                 <NavigationLink href="/blog">Blog</NavigationLink>
                 <NavigationLink href="/projects" isLast>
                   Projects

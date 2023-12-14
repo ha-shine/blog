@@ -1,13 +1,11 @@
 import Layout from "../component/Layout";
 import Head from "next/head";
-import { Image } from "@chakra-ui/image";
-import { Center, Flex, Link, VStack, Text, Box } from "@chakra-ui/react";
-import Heading from "../component/Heading";
+import { Center, HStack, Text, VStack } from "@chakra-ui/react";
 import SocialIconGroup from "../component/SocialIconGroup";
-import { getAllCreationPosts } from "../lib/creation";
-import CreationCardContainer from "../component/CreationCardContainer";
+import Link from "next/link";
+import { ReactNode } from "react";
 
-export default function Index({ creations }) {
+export default function Index() {
   return (
     <Layout>
       <Head>
@@ -29,48 +27,85 @@ export default function Index({ creations }) {
       </Head>
       <Center>
         <VStack mt="120" spacing="4">
-          <Image
-            boxSize="14em"
-            src="https://stuffs.shine.rocks/assets/profile.jpg"
-            alt="Htet Aung Shine"
-            borderRadius="full"
-            objectFit="cover"
-            border="solid 10px"
-            borderColor="cyan.400"
-            mb="6"
-          />
-
-          <Heading color="gray.50">Htet Aung Shine</Heading>
-
           <Center>
-            <VStack spacing="0">
-              <Text fontWeight="normal" fontSize="lg" color="gray.400">
-                Engineer | Maker | 🇦🇺
-              </Text>
-              <Text fontWeight="normal" fontSize="lg" color="gray.200">
-                <Link href="mailto:h@shine.rocks">h@shine.rocks</Link>
-              </Text>
+            <VStack spacing="20">
+              <VStack spacing="4">
+                <Text fontWeight="normal" fontSize="3xl" color="gray.400">
+                  Hey! I'm Shine, a software engineer from Australia. I am
+                  currently employed with{" "}
+                  <Link
+                    href="https://www.grab.com/sg/"
+                    target="_blank"
+                    style={{
+                      textDecoration: "underline 6px #0A9830",
+                      textUnderlineOffset: "1px",
+                    }}
+                  >
+                    Grab
+                  </Link>
+                  , the Uber of Southeast Asia, working on our internal
+                  continuous deployment system. I started my foray into software
+                  engineering writing games in Visual Basic, and now I'm what
+                  you would call a full-stack engineer.
+                </Text>
+                <Text fontWeight="normal" fontSize="3xl" color="gray.400">
+                  My weapons of choice nowadays are{" "}
+                  <IndexLink href="https://kotlinlang.org/" color="#7F52FF">
+                    Kotlin
+                  </IndexLink>{" "}
+                  and{" "}
+                  <IndexLink
+                    href="https://www.typescriptlang.org/"
+                    color="#3078C6"
+                  >
+                    Typescript
+                  </IndexLink>
+                  , with{" "}
+                  <IndexLink href="https://nextjs.org/" color="#ADADAD">
+                    NextJS
+                  </IndexLink>{" "}
+                  with{" "}
+                  <IndexLink href="https://quarkus.io/" color="#4695EB">
+                    Quarkus
+                  </IndexLink>{" "}
+                  being my goto stack. I am a design enthusiast and love
+                  building visually pleasing things, although my design skills
+                  are not up to my taste yet.
+                </Text>
+                <Text fontWeight="normal" fontSize="3xl" color="gray.400">
+                  I am trying to bootstrap my entrepreneur journey for the
+                  moment, and not available for new opportunities at the moment.
+                  But if you want to collaborate or have some cool ideas for a
+                  project, feel free to contact me at any of my social handles.
+                </Text>
+              </VStack>
+              <SocialIconGroup />
             </VStack>
           </Center>
-
-          <Flex pt="4">
-            <SocialIconGroup />
-          </Flex>
         </VStack>
       </Center>
-
-      <Box my={["10", "20"]}>
-        <CreationCardContainer creations={creations} />
-      </Box>
     </Layout>
   );
 }
 
-export async function getStaticProps() {
-  const creations = getAllCreationPosts();
-  return {
-    props: {
-      creations,
-    },
-  };
+type IndexLinkProps = {
+  href: string;
+  color: string;
+  children?: ReactNode;
+};
+
+function IndexLink({ href, color, children }: IndexLinkProps) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      style={{
+        textDecoration: `underline 6px ${color}`,
+        textUnderlineOffset: "1px",
+        textDecorationSkipInk: "none",
+      }}
+    >
+      {children}
+    </Link>
+  );
 }
