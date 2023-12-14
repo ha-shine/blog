@@ -60,6 +60,7 @@ class App {
 
     this.boids.push(new Boid(position));
     this.boidsGraphics.push(graphics);
+    // @ts-ignore
     this.app.stage.addChild(graphics);
   }
 
